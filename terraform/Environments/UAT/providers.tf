@@ -1,4 +1,3 @@
-# Dev Environment - Variables
 terraform {
   required_version = "~> 1.15.0"
 
@@ -11,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket         = "terraform-state-bucket"
-    key            = "dev/vpc/terraform.tfstate"
+    key            = "uat/vpc/terraform.tfstate"
     region         = "ap-south-1"
     dynamodb_table = "terraform-locks"
     encrypt        = true
@@ -23,7 +22,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Environment = "dev"
+      Environment = "uat"
       Project     = "Infrastructure"
       ManagedBy   = "Terraform"
     }
