@@ -1,33 +1,45 @@
 variable "ec2_name" {
-    description = "name of instance"
-    type = string
-    default = "dev-ec2"
+  description = "Name of EC2 instance"
+  type        = string
+  default     = "dev"
 }
 
-
-variable "ami_name" {
-    description = "ami"
-    type = string
-    default = "ami-1234567"
+variable "ami" {
+  description = "AMI ID"
+  type        = string
+  default     = "ami-01a00762f46d584a1"
 }
 
 variable "instance_type" {
-    description = "type"
-    type = string
-    default = "t2.micro"
-  
+  description = "EC2 instance type"
+  type        = string
+  default     = "t2.micro"
 }
 
-variable "ssd" {
-    description = "type"
-    type = string
-    default = "gp3"
-  
+variable "key_name" {
+  description = "EC2 key pair name"
+  type        = string
+  default     = "dev_keypair"
 }
 
-variable "volume_size" {
-    description = ""
-    type = string
-    default = "20"
-  
+variable "root_volume_size" {
+  description = "Root volume size in GB"
+  type        = number
+  default     = 8
+}
+
+variable "root_volume_type" {
+  description = "Root volume type"
+  type        = string
+  default     = "gp3"
+}
+
+variable "subnet_id" {
+  description = "Subnet ID"
+  type        = string
+}
+
+variable "security_group_ids" {
+  description = "Security group IDs"
+  type        = list(string)
 }
