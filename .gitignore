@@ -1,0 +1,16 @@
+cat >> .gitignore <<'EOF'
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+.terraform.lock.hcl
+
+# AWS CLI installer
+awscliv2.zip
+
+# Private keys
+*.pem
+EOF
