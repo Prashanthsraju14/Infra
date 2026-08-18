@@ -8,12 +8,16 @@ terraform {
     }
   }
 
+  # Remote backend will be configured after Foundation/Backend is deployed
+  # Use: terraform init -backend-config=backend-config.hcl
+  # Or uncomment and update the bucket name below
+  
   backend "s3" {
-    bucket         = "terraform-state-bucket"
-    key            = "uat/vpc/terraform.tfstate"
-    region         = "ap-south-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
+    # bucket         = "infra-foundation-tfstate-ACCOUNT_ID"  # From Foundation/Backend output
+    # key            = "uat/vpc/terraform.tfstate"
+    # region         = "ap-south-1"
+    # dynamodb_table = "terraform-locks"
+    # encrypt        = true
   }
 }
 

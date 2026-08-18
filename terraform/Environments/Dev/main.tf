@@ -1,18 +1,33 @@
-# Dev Environment - Main Configuration
+# Dev VPC Infrastructure
+# Production-grade VPC with high availability across 2 AZs
 
 module "vpc" {
   source = "../../modules/vpc"
 
-  name                 = var.name
-  environment          = var.environment
-  vpc_cidr             = var.vpc_cidr
-  azs                  = var.azs
+  # Project identification
+  name        = var.name
+  environment = var.environment
+
+  # Network configuration
+  vpc_cidr            = var.vpc_cidr
+  azs                 = var.azs
   public_subnets       = var.public_subnets
   private_subnets      = var.private_subnets
   database_subnets     = var.database_subnets
+
+  # Feature flags
   enable_nat_gateway   = var.enable_nat_gateway
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags = var.tags
+  # Tagging strategy
+  tags = merge(
+    var.common_tags,
+    var.tags,
+    {
+      Environment = var.environment
+      Project     = var.project_name
+      Region      = var.aws_region
+    }
+  )
 }

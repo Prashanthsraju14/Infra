@@ -1,5 +1,3 @@
-# Dev Environment - Outputs
-
 output "vpc_id" {
   description = "VPC ID"
   value       = module.vpc.vpc_id
@@ -16,7 +14,7 @@ output "public_subnet_ids" {
 }
 
 output "private_subnet_ids" {
-  description = "Private subnet IDs"
+  description = "Private application subnet IDs"
   value       = module.vpc.private_subnet_ids
 }
 
@@ -25,12 +23,27 @@ output "database_subnet_ids" {
   value       = module.vpc.database_subnet_ids
 }
 
+output "public_subnet_ids_by_az" {
+  description = "Public subnet IDs by AZ"
+  value       = module.vpc.public_subnet_ids_by_az
+}
+
+output "private_subnet_ids_by_az" {
+  description = "Private subnet IDs by AZ"
+  value       = module.vpc.private_subnet_ids_by_az
+}
+
+output "database_subnet_ids_by_az" {
+  description = "Database subnet IDs by AZ"
+  value       = module.vpc.database_subnet_ids_by_az
+}
+
 output "nat_gateway_id" {
   description = "NAT Gateway ID"
   value       = module.vpc.nat_gateway_id
 }
 
-output "nat_gateway_eip" {
-  description = "NAT Gateway Elastic IP"
-  value       = module.vpc.nat_gateway_eip
+output "nat_public_ip" {
+  description = "NAT Gateway public IP"
+  value       = module.vpc.nat_public_ip
 }
