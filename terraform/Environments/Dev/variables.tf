@@ -131,3 +131,16 @@ variable "tags" {
     ManagedBy   = "Terraform"
   }
 }
+
+variable "cluster_name" {
+  description = "Name of the EKS cluster"
+  type        = string
+  default     = "infra-dev-eks"
+}
+
+variable "kubernetes_version" {
+  description = "Kubernetes version for the EKS cluster"
+  type        = string
+  default     = "1.32"
+}
+
