@@ -1,14 +1,14 @@
-terraform {
-  backend "s3" {
-    bucket = "infra-foundation-tfstate-723591018998"
+# terraform {
+#   backend "s3" {
+#     bucket = "infra-foundation-tfstate-723591018998"
 
-    key    = "iot-platform/dev/network/terraform.tfstate"
+#     key    = "iot-platform/dev/network/terraform.tfstate"
 
-    region = "ap-south-1"
+#     region = "ap-south-1"
 
-    encrypt = true
+#     encrypt = true
 
-    use_lockfile = true
-  }
-}
+#     use_lockfile = true
+#   }
+# }
 

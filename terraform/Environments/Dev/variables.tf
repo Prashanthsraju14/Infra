@@ -132,15 +132,58 @@ variable "tags" {
   }
 }
 
-variable "cluster_name" {
-  description = "Name of the EKS cluster"
-  type        = string
-  default     = "infra-dev-eks"
-}
+# EKS Variables
 
 variable "kubernetes_version" {
-  description = "Kubernetes version for the EKS cluster"
+  description = "Kubernetes version"
   type        = string
-  default     = "1.32"
 }
 
+variable "node_instance_type" {
+  description = "EC2 instance type for EKS managed nodes"
+  type        = string
+  default     = "t3.small"
+}
+
+variable "node_min_size" {
+  description = "Minimum number of nodes"
+  type        = number
+  default     = 1
+}
+
+variable "node_desired_size" {
+  description = "Desired number of nodes"
+  type        = number
+  default     = 1
+}
+
+variable "node_max_size" {
+  description = "Maximum number of nodes"
+  type        = number
+  default     = 2
+}
+
+variable "node_disk_size" {
+  description = "Root EBS volume size in GB"
+  type        = number
+  default     = 20
+}
+
+# Flow Logs Variables
+
+variable "enable_flow_logs" {
+  description = "Enable VPC Flow Logs"
+  type        = bool
+  default     = false
+}
+
+variable "flow_log_retention_days" {
+  description = "CloudWatch log retention in days"
+  type        = number
+  default     = 7
+}
+
+variable "admin_principal_arn" {
+  description = "IAM principal allowed to administer EKS"
+  type        = string
+}

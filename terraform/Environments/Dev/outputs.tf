@@ -47,3 +47,44 @@ output "nat_public_ip" {
   description = "NAT Gateway public IP"
   value       = module.vpc.nat_public_ip
 }
+
+output "eks_cluster_name" {
+
+  value = module.eks.cluster_name
+}
+
+
+output "eks_cluster_endpoint" {
+
+  value = module.eks.cluster_endpoint
+}
+
+
+output "eks_cluster_arn" {
+
+  value = module.eks.cluster_arn
+}
+
+
+output "eks_cluster_version" {
+
+  value = module.eks.cluster_version
+}
+
+
+output "eks_cluster_role_arn" {
+
+  value = module.eks.cluster_role_arn
+}
+
+
+output "eks_node_role_arn" {
+
+  value = module.eks.node_role_arn
+}
+
+
+output "eks_node_group_name" {
+
+  value = module.eks.node_group_name
+}
