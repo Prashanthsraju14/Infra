@@ -81,6 +81,24 @@ resource "aws_iam_role_policy_attachment" "node_worker" {
 
 
 # ============================================================
+# EKS VPC CNI POLICY
+# ============================================================
+# Required by the AWS VPC CNI (aws-node) to manage
+# ENIs and IP addresses for pods.
+#
+# For this practice cluster, the policy is attached
+# directly to the node IAM role.
+# ============================================================
+
+resource "aws_iam_role_policy_attachment" "node_cni" {
+
+  role = aws_iam_role.node.name
+
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+}
+
+
+# ============================================================
 # ECR CONTAINER IMAGE PULL POLICY
 # ============================================================
 

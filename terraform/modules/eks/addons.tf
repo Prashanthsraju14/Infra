@@ -21,21 +21,25 @@ resource "aws_eks_addon" "vpc_cni" {
 # ============================================================
 # COREDNS
 # ============================================================
+data "aws_eks_addon_version" "coredns" {
+  addon_name         = "coredns"
+  kubernetes_version = var.kubernetes_version
+  most_recent        = true
+}
 
 resource "aws_eks_addon" "coredns" {
-
   cluster_name = aws_eks_cluster.this.name
-
-  addon_name = "coredns"
+  addon_name   = "coredns"
+  addon_version = data.aws_eks_addon_version.coredns.version
 
   resolve_conflicts_on_create = "OVERWRITE"
-
-  resolve_conflicts_on_update = "PRESERVE"
+  resolve_conflicts_on_update = "OVERWRITE"
 
   depends_on = [
     aws_eks_node_group.practice
   ]
 }
+
 
 
 # ============================================================
@@ -58,6 +62,7 @@ resource "aws_eks_addon" "kube_proxy" {
 }
 
 
+
 # ============================================================
 # EKS POD IDENTITY AGENT
 # ============================================================
@@ -78,21 +83,3 @@ resource "aws_eks_addon" "pod_identity_agent" {
 }
 
 
-# ============================================================
-# EBS CSI DRIVER
-# ============================================================
-
-resource "aws_eks_addon" "ebs_csi" {
-
-  cluster_name = aws_eks_cluster.this.name
-
-  addon_name = "aws-ebs-csi-driver"
-
-  resolve_conflicts_on_create = "OVERWRITE"
-
-  resolve_conflicts_on_update = "PRESERVE"
-
-  depends_on = [
-    aws_eks_node_group.practice
-  ]
-}
